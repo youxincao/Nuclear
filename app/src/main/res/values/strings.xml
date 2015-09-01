@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">岸谷远程核剂量系统</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="tv_device_time">时间</string>
+    <string name="string_device_id">设备ID</string>
+    <string name="string_device_der">剂量率</string>
+    <string name="string_device_de">累计</string>
+    <string name="string_device_alert">报警</string>
+    <string name="string_yes">是</string>
+    <string name="string_no">否</string>
+</resources>

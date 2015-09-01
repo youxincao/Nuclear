@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_device_id"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:gravity="right"
+        android:text="@string/string_device_id"
+        android:textSize="@dimen/device_font_size" />
+
+    <TextView
+        android:id="@+id/et_device_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tv_device_id"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/tv_device_id"
+        android:gravity="left"
+        android:textSize="@dimen/device_font_size" />
+
+    <TextView
+        android:id="@+id/tv_device_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/tv_device_id"
+        android:layout_below="@id/tv_device_id"
+        android:layout_marginTop="@dimen/device_list_margin_top"
+        android:gravity="right"
+        android:text="@string/tv_device_time"
+        android:textSize="@dimen/device_font_size" />
+
+
+    <TextView
+        android:id="@+id/et_device_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/tv_device_time"
+        android:layout_below="@+id/et_device_id"
+        android:layout_toRightOf="@id/tv_device_id"
+        android:gravity="bottom|left"
+        android:textSize="@dimen/device_font_size" />
+
+    <TextView
+        android:id="@+id/tv_device_der"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/tv_device_id"
+        android:layout_below="@id/tv_device_time"
+        android:layout_marginTop="@dimen/device_list_margin_top"
+        android:text="@string/string_device_der"
+        android:textSize="@dimen/device_font_size" />
+
+    <TextView
+        android:id="@+id/et_device_der"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/tv_device_der"
+        android:layout_below="@+id/et_device_time"
+        android:layout_toRightOf="@id/tv_device_id"
+        android:gravity="bottom|left"
+        android:textSize="@dimen/device_font_size" />
+
+
+    <TextView
+        android:id="@+id/tv_device_de"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/tv_device_id"
+        android:layout_below="@id/tv_device_der"
+        android:layout_marginTop="@dimen/device_list_margin_top"
+        android:text="@string/string_device_de"
+        android:textSize="@dimen/device_font_size" />
+
+    <TextView
+        android:id="@+id/et_device_de"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/tv_device_de"
+        android:layout_below="@+id/et_device_der"
+        android:layout_toRightOf="@id/tv_device_id"
+        android:gravity="bottom|left"
+        android:textSize="@dimen/device_font_size" />
+
+    <TextView
+        android:id="@+id/tv_device_alert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/tv_device_id"
+        android:layout_below="@id/tv_device_de"
+        android:layout_marginTop="@dimen/device_list_margin_top"
+        android:text="@string/string_device_alert"
+        android:textSize="@dimen/device_font_size" />
+
+    <TextView
+        android:id="@+id/et_device_alert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/tv_device_alert"
+        android:layout_below="@+id/et_device_de"
+        android:layout_toRightOf="@id/tv_device_id"
+        android:gravity="bottom|left"
+        android:textSize="@dimen/device_font_size" />
+</RelativeLayout>
