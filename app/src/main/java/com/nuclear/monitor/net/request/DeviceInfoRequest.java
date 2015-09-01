@@ -21,9 +21,9 @@ public class DeviceInfoRequest extends BaseRequest<DeviceInfo[]> {
         HttpRequest request = null;
         GenericUrl genericUrl = new GenericUrl(url);
 
-        if(postParameters == null){
+        if (postParameters == null) {
             request = getHttpRequestFactory().buildGetRequest(genericUrl);
-        }else {
+        } else {
             HttpContent content = new UrlEncodedContent(postParameters);
             request = buildPostRequest(genericUrl, content);
         }

@@ -1,9 +1,9 @@
 package com.nuclear.monitor;
 
 import android.app.Activity;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -15,11 +15,14 @@ import com.octo.android.robospice.SpiceManager;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
+import java.util.TimeZone;
 
 public class MainActivity extends Activity {
 
@@ -30,6 +33,9 @@ public class MainActivity extends Activity {
 
     private static final int MSG_TYPE_QUERY_DEVICE_INFOS = 0x1;
     private static final int DEVICEINFO_QUERY_INTERVAL = 5000;
+
+    public static final String UTC_PATTERN = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+    public static final String LOCAL_PATTERN = "yyyy-MM-dd HH:mm:ss";
 
     private final SpiceManager mSpiceManager = new SpiceManager(HttpNuclearService.class);
     private SimpleAdapter mAdapter = null;
@@ -110,9 +116,14 @@ public class MainActivity extends Activity {
                     try {
                         deviceInfos = (DeviceInfo[]) o;
                         for (int i = 0; i < deviceInfos.length; i++) {
-                            Log.e(TAG, "Url["+ urlString +"] Device : " + deviceInfos[i]);
+                            Log.e(TAG, "Url[" + urlString + "] Device : " + deviceInfos[i]);
                             Map<String, Object> map = getDeviceData(deviceId);
-                            map.put("time", deviceInfos[i].getTime());
+                            String date =
+                                    utc2Local(deviceInfos[i].getTime(), UTC_PATTERN, LOCAL_PATTERN);
+                            if (date == null) {
+                                date = deviceInfos[i].getTime();
+                            }
+                            map.put("time", date);
                             map.put("de", deviceInfos[i].getDe());
                             map.put("der", deviceInfos[i].getDer());
                             map.put("alert", deviceInfos[i].isAlert() ? getResources().getString(R.string.string_yes)
@@ -153,4 +164,22 @@ public class MainActivity extends Activity {
         }
         return result;
     }
+
+    public static String utc2Local(String utcTime, String utcTimePatten,
+                                   String localTimePatten) {
+        SimpleDateFormat utcFormater = new SimpleDateFormat(utcTimePatten);
+        utcFormater.setTimeZone(TimeZone.getTimeZone("UTC"));
+        Date gpsUTCDate = null;
+        try {
+            gpsUTCDate = utcFormater.parse(utcTime);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+        SimpleDateFormat localFormater = new SimpleDateFormat(localTimePatten);
+        localFormater.setTimeZone(TimeZone.getDefault());
+        String localTime = localFormater.format(gpsUTCDate.getTime());
+        return localTime;
+    }
+
 }

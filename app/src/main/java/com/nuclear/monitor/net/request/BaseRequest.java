@@ -20,7 +20,7 @@ public abstract class BaseRequest<RESULT> extends GoogleHttpClientSpiceRequest {
         super(clazz);
     }
 
-    public HttpRequest buildGetRequest(GenericUrl url) throws Exception{
+    public HttpRequest buildGetRequest(GenericUrl url) throws Exception {
         System.setProperty("http.keepAlive", "false");
         HttpRequest request = getHttpRequestFactory().buildGetRequest(url);
         request.getHeaders().setAcceptEncoding("gzip");
